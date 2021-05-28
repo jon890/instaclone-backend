@@ -1,14 +1,7 @@
-import { makeExecutableSchema } from "apollo-server";
-import { loadFilesSync, mergeResolvers, mergeTypeDefs } from "graphql-tools";
+import { loadFilesSync, mergeResolvers, mergeTypeDefs } from 'graphql-tools';
 
 const loadedTypes = loadFilesSync(`${__dirname}/**/*.typeDefs.js`);
-const typeDefs = mergeTypeDefs(loadedTypes);
+const loadedResolvers = loadFilesSync(`${__dirname}/**/*.resolvers.js`);
 
-const loadedResolvers = loadFilesSync(
-  `${__dirname}/**/*.{queries,mutations}.js`
-);
-const resolvers = mergeResolvers(loadedResolvers);
-
-const schema = makeExecutableSchema({ typeDefs, resolvers });
-
-export default schema;
+export const typeDefs = mergeTypeDefs(loadedTypes);
+export const resolvers = mergeResolvers(loadedResolvers);
