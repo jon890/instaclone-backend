@@ -32,7 +32,7 @@ export default {
         console.log(uglyPassword);
 
         // 저장하고 유저를 리턴하기
-        const user = await client.user.create({
+        await client.user.create({
           data: {
             username,
             email,
@@ -43,7 +43,8 @@ export default {
         });
         return { ok: true };
       } catch (error) {
-        return { ok: false, error: error };
+        console.log(error);
+        return { ok: false, error: "Can't create account" };
       }
     },
   },
