@@ -1,8 +1,8 @@
-import client from '../../client';
+import { Resolvers } from '../../type';
 
-export default {
+const resolvers: Resolvers = {
   Query: {
-    searchUsers: (_, { keyword }) =>
+    searchUsers: (_, { keyword }, { client }) =>
       client.user.findMany({
         where: {
           username: {
@@ -12,3 +12,5 @@ export default {
       }),
   },
 };
+
+export default resolvers;

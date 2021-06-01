@@ -1,6 +1,7 @@
 import client from '../client';
+import { Resolvers } from '../type';
 
-export default {
+const resolvers: Resolvers = {
   // Computed Fields
   // type User의 각 필드에 대한 resolver를 정의할 수 있다
   User: {
@@ -64,3 +65,5 @@ export default {
     },
   },
 };
+
+export default resolvers;
